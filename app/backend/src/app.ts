@@ -28,7 +28,6 @@ class App {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
   }
 }
-console.log(App);
 
 export { App };
 
