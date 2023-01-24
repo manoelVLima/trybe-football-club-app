@@ -72,15 +72,16 @@ describe('Testa a rota de Login', () => {
     expect(response.body).to.be.deep.equal({ message: 'Incorrect email or password' });
   });
 
-  // it('Testa a requisição GET para realizar a busca da role do usuário com sucesso', async () => {
+  it('Testa a requisição GET para realizar a busca da role do usuário com sucesso', async () => {
 
-  //   sinon.stub(UserModel, 'findOne').resolves({ role: user.role } as any)
+    sinon.stub(UserModel, 'findOne').resolves({ role: user.role } as any)
 
-  //   const response: Response = await chai.request(app).get('/login/validate').set('authorization', token)
+    const response: Response = await chai.request(app).get('/login/validate')
+      .set('Authorization', token);
 
-  //   expect(response.status).to.equal(400);
-  //   expect(response.body).to.be.deep.equal({ role: 'admin' });
-  // });
+    expect(response.status).to.equal(200);
+    expect(response.body).to.be.deep.equal({ role: 'admin' });
+  });
 
   it('Testa a requisição GET para realizar a busca da role do usuário sem envio do token', async () => {
 
