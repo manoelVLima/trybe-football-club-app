@@ -16,13 +16,14 @@ export default class UserService {
 
   public async login(email:string, password:string):Promise<string | null | unknown> {
     const user = await this.model.findOne({ where: { email } });
+
     if (user && bcrypt.compareSync(password, user.password)) {
       return this.jwt.createToken({ email });
     }
     return null;
   }
 
-  public async validate(user:User) {
+  public async findRole(user:User) {
     const response = await this.model.findOne({ where: { email: user.email } }) as User;
     return ({ role: response.role });
   }

@@ -20,8 +20,8 @@ export default class UserController {
     }
   }
 
-  public async validate(req:Request, res: Response) {
-    const response = await this.service.validate(req.body.user);
+  public async findRole(req:Request, res: Response) {
+    const response = await this.service.findRole(req.body.user);
     return res.status(200).json(response);
   }
 }

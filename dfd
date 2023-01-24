@@ -1,0 +1,53 @@
+[33mcommit e577bef92627815960559e40004c526ae61319f5[m[33m ([m[1;36mHEAD -> [m[1;32mmanoel-vieira-trybe-futebol-clube[m[33m, [m[1;31morigin/manoel-vieira-trybe-futebol-clube[m[33m)[m
+Author: Manoel Vieira Lima Junior <manoel.lima03@gmail.com>
+Date:   Mon Jan 23 13:52:58 2023 -0300
+
+    Criação de metodos e da rota /login
+
+[33mcommit 07d844b3ab9694cbd051245e0ed56218c35303c1[m
+Author: Manoel Vieira Lima Junior <manoel.lima03@gmail.com>
+Date:   Sat Jan 21 09:33:51 2023 -0300
+
+    Testando configurações do dockerfile
+
+[33mcommit 8dde419f695b395685f768b0c640b6f4058e251f[m
+Author: Manoel Vieira Lima Junior <manoel.lima03@gmail.com>
+Date:   Fri Jan 20 18:32:06 2023 -0300
+
+    Criação de Migrations e Models
+
+[33mcommit 346f0b28230cbaf7c528b22f341d5c04929979c9[m
+Author: Manoel Vieira Lima Junior <manoel.lima03@gmail.com>
+Date:   Fri Jan 20 17:15:49 2023 -0300
+
+    Configurei o Dockerfile
+
+[33mcommit eca5c699267567092d992bd220a7e9f6f1f5f49c[m
+Author: Manoel Vieira Lima Junior <manoel.lima03@gmail.com>
+Date:   Fri Jan 20 15:23:30 2023 -0300
+
+    Iniciando mais um projeto #VQV
+
+[33mcommit d58b2e282073a904bee461bb397ddb1638956a5b[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Danilo Oliveira Silva <43826155+Danilo-Oliveira-Silva@users.noreply.github.com>
+Date:   Thu Jan 19 17:25:11 2023 -0300
+
+    Update README.md
+
+[33mcommit 8f465c7f71c094658c86e86e1943acdce1189a70[m
+Author: trybe-tech-ops <82593112+trybe-tech-ops@users.noreply.github.com>
+Date:   Thu Jan 19 17:21:11 2023 -0300
+
+    .github/workflows/main.yml updated
+
+[33mcommit 73b365247669b7cf0032fbdf0fa3b6a2e9ef026d[m
+Author: trybe-tech-ops <82593112+trybe-tech-ops@users.noreply.github.com>
+Date:   Thu Jan 19 17:21:10 2023 -0300
+
+    README.md updated
+
+[33mcommit f5b0cfab80581dccfccdb5cf27bc243868797ac5[m
+Author: trybe-tech-ops <82593112+trybe-tech-ops@users.noreply.github.com>
+Date:   Thu Jan 19 17:21:10 2023 -0300
+
+    Initial commit
