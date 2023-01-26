@@ -1,5 +1,5 @@
 // import { Op } from 'sequelize';
-import Match from '../interfaces/Matches';
+import Match, { MatchGoals } from '../interfaces/Matches';
 import Team from '../database/models/Teams';
 import MatchModel from '../database/models/Matches';
 
@@ -79,5 +79,12 @@ export default class MatchService {
       homeTeamGoals, homeTeamId, awayTeamGoals, awayTeamId, inProgress: true });
 
     return { isError: false, data: newMatch, status: 201 };
+  }
+
+  public async updateMatches(id:string, matchGoals:MatchGoals) {
+    const { awayTeamGoals, homeTeamGoals } = matchGoals;
+
+    await this.model.update({ awayTeamGoals, homeTeamGoals }, { where: { id } });
+    return { message: 'Match updated' };
   }
 }

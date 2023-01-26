@@ -4,3 +4,8 @@ export default interface Match {
   homeTeamGoals: number;
   awayTeamGoals: number;
 }
+
+export interface MatchGoals {
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+}
