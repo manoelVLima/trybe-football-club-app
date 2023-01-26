@@ -15,7 +15,6 @@ export default class TeamService {
 
   public async getById(id:string):Promise<Teams | null> {
     const team = await this.model.findByPk(id);
-    console.log(team);
 
     if (!team) return null;
 
