@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import auth from '../middlewares/authValidate';
-import MatchController from '../controllers/Match';
+import MatchController from '../controllers/Matches';
 
 const router = Router();
 const matchController = new MatchController();
 
-router.get('/', matchController.getMatches.bind(matchController));
 router.post('/', auth, matchController.insertMatch.bind(matchController));
+router.patch('/:id/finish', matchController.setProgress.bind(matchController));
+router.get('/', matchController.getMatches.bind(matchController));
 
 export default router;

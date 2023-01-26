@@ -4,7 +4,7 @@ import Jwt from '../utils/Jwt';
 
 const auth: RequestHandler = (req, res, next) => {
   const { authorization: token } = req.headers;
-  const secret = process.env.JWT_SECRET as string;
+  const secret = process.env.JWT_SECRET || 'bolacha' as string;
   const jwt = new Jwt(secret);
 
   if (!token) return res.status(400).json({ message: 'Token not found' });

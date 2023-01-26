@@ -3,7 +3,7 @@ import User from '../interfaces/User';
 import UserModel from '../database/models/User';
 import Jwt from '../utils/Jwt';
 
-const secret = process.env.JWT_SECRET as string;
+const secret = process.env.JWT_SECRET || 'bolacha' as string;
 
 export default class UserService {
   public model;

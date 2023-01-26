@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import MatchService from '../services/Match';
+import MatchService from '../services/Matches';
 
 export default class MatchController {
   public service;
@@ -17,12 +17,19 @@ export default class MatchController {
     return res.status(200).json(matches);
   }
 
+  public async setProgress(req:Request, res: Response) {
+    const { id } = req.params;
+
+    const { message, status } = await this.service.setProgress(id);
+    return res.status(status).json({ message });
+  }
+
   public async insertMatch(req:Request, res: Response) {
     const match = req.body;
 
-    const { error, data, message, status } = await this.service.insertMatch(match);
+    const { isError, data, message, status } = await this.service.insertMatch(match);
 
-    if (error) {
+    if (isError) {
       return res.status(status).json({ message });
     }
 

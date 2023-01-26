@@ -1,5 +1,5 @@
-import Teams from '../interfaces/Team';
-import TeamModel from '../database/models/Team';
+import Teams from '../interfaces/Teams';
+import TeamModel from '../database/models/Teams';
 
 export default class TeamService {
   public model;

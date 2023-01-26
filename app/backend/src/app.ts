@@ -1,7 +1,7 @@
 import * as express from 'express';
 import UserRouter from './routes/User';
-import TeamRouter from './routes/Team';
-import MatchRouter from './routes/Match';
+import TeamRouter from './routes/Teams';
+import MatchRouter from './routes/Matches';
 
 class App {
   public app: express.Express;
@@ -13,6 +13,9 @@ class App {
 
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
+    this.app.use('/login', UserRouter);
+    this.app.use('/teams', TeamRouter);
+    this.app.use('/matches', MatchRouter);
   }
 
   private config():void {
@@ -25,9 +28,6 @@ class App {
 
     this.app.use(express.json());
     this.app.use(accessControl);
-    this.app.use('/login', UserRouter);
-    this.app.use('/teams', TeamRouter);
-    this.app.use('/matches', MatchRouter);
   }
 
   public start(PORT: string | number):void {
