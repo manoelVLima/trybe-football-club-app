@@ -12,7 +12,7 @@ const auth: RequestHandler = (req, res, next) => {
   const payload = jwt.validateToken(token) as JwtPayload;
 
   if (payload.isError) {
-    return res.status(400).json({ message: payload.isError });
+    return res.status(401).json({ message: payload.message });
   }
   req.body.user = payload;
   return next();

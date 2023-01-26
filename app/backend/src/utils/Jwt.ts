@@ -24,7 +24,7 @@ export default class Jwt {
       return payload;
     } catch (error) {
       console.log(error);
-      return { isError: true, message: 'Invalid token' };
+      return { isError: true, message: 'Token must be a valid token' };
     }
   }
 }
