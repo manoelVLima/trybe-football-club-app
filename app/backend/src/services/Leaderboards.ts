@@ -37,7 +37,7 @@ export default class LeaderboardServices {
         },
       ],
     })
-      .then((response) => response.map((team) => team.get({ plain: true })))
+      .then((r) => r.map((team) => team.get({ plain: true })))
       .then((teams) => teams.map((team) => new Statistics(team)))
       .then((team) => team
         .sort((c, b) => b.totalPoints - c.totalPoints

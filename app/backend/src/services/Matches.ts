@@ -1,4 +1,5 @@
 // import { Op } from 'sequelize';
+import { Op } from 'sequelize';
 import Match, { MatchGoals } from '../interfaces/Matches';
 import Team from '../database/models/Teams';
 import MatchModel from '../database/models/Matches';
@@ -44,41 +45,24 @@ export default class MatchService {
   public async insertMatch(match: Match) {
     const { awayTeamGoals, awayTeamId, homeTeamGoals, homeTeamId } = match;
 
-    // if (homeTeamId === awayTeamId) {
-    //   return { isError: true,
-    //     message: 'It is not possible to create a match with two equal teams',
-    //     status: 422 };
-    // }
-
-    // const team = await this.teamModel.findAll({
-    //   where: { id: { [Op.in]: [awayTeamId, homeTeamId] } } });
-
-    // if (!team[0] || !team[1]) {
-    //   return { isError: true,
-    //     message: 'There is no team with such id!',
-    //     status: 404 };
-    // }
-
-    // const newMatch = await this.model
-    //   .create({ awayTeamGoals, awayTeamId, homeTeamGoals, homeTeamId, inProgress: true });
-    // return { data: newMatch, isError: false, status: 201 };
-
     if (homeTeamId === awayTeamId) {
       return { isError: true,
         message: 'It is not possible to create a match with two equal teams',
-        status: 422,
-      };
+        status: 422 };
     }
-    const homeTeam = await this.teamModel.findByPk(homeTeamId);
-    const awayTeam = await this.teamModel.findByPk(awayTeamId);
 
-    if (!homeTeam || !awayTeam) {
-      return { isError: true, message: 'There is no team with such id!', status: 404 };
+    const team = await this.teamModel.findAll({
+      where: { id: { [Op.in]: [awayTeamId, homeTeamId] } } });
+
+    if (!team[0] || !team[1]) {
+      return { isError: true,
+        message: 'There is no team with such id!',
+        status: 404 };
     }
-    const newMatch = await this.model.create({
-      homeTeamGoals, homeTeamId, awayTeamGoals, awayTeamId, inProgress: true });
 
-    return { isError: false, data: newMatch, status: 201 };
+    const newMatch = await this.model
+      .create({ awayTeamGoals, awayTeamId, homeTeamGoals, homeTeamId, inProgress: true });
+    return { data: newMatch, isError: false, status: 201 };
   }
 
   public async updateMatches(id:string, matchGoals:MatchGoals) {
