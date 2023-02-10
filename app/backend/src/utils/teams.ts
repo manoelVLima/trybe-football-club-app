@@ -15,65 +15,40 @@ export default class Statistics {
 
   constructor(team: TeamType) {
     this.name = team.teamName;
-    this.teamStatistics(team);
+    this.TeamStatistics(team);
   }
 
-  public winMatches() {
+  public winMatchs() {
     this.totalVictories += 1;
     this.totalPoints += 3;
   }
 
-  public drawMatches() {
+  public DrawMatchs() {
     this.totalDraws += 1;
     this.totalPoints += 1;
   }
 
-  public lostMatches() {
+  public LossMatchs() {
     this.totalLosses += 1;
   }
 
-  public goalsBalances() {
+  public goalBalance() {
     this.goalsBalance = this.goalsFavor - this.goalsOwn;
   }
 
-  public teamStatistics(team: TeamType) {
-    if (team.homeMatchs) {
-      this.totalGames += team.homeMatchs.length;
-      this.goals(team.homeMatchs, true);
-
-      team.homeMatchs.forEach((match) => {
-        if (match.homeTeamGoals > match.awayTeamGoals) this.winMatches();
-        else if (match.homeTeamGoals < match.awayTeamGoals) this.lostMatches();
-        else this.drawMatches();
-      });
-    }
-
-    if (team.awayMatchs) {
-      this.totalGames += team.awayMatchs.length;
-      this.goals(team.awayMatchs, false);
-
-      team.awayMatchs.forEach((match) => {
-        if (match.awayTeamGoals > match.homeTeamGoals) this.winMatches();
-        else if (match.awayTeamGoals < match.homeTeamGoals) this.lostMatches();
-      });
-    }
-    this.efficiency = this.efficiencyInGames();
-  }
-
-  public goals(matches: IMatches[], local:boolean) {
+  public goals(matches: IMatches[], local: boolean) {
     if (local) {
       matches.forEach((match) => {
         this.goalsFavor += match.homeTeamGoals;
         this.goalsOwn += match.awayTeamGoals;
-        this.goalsBalances();
+        this.goalBalance();
       });
     }
-
     if (!local) {
       matches.forEach((match) => {
         this.goalsFavor += match.awayTeamGoals;
         this.goalsOwn += match.homeTeamGoals;
-        this.goalsBalances();
+        this.goalBalance();
       });
     }
   }
@@ -81,5 +56,26 @@ export default class Statistics {
   public efficiencyInGames() {
     if (!this.totalGames) return 100;
     return +((this.totalPoints / (this.totalGames * 3)) * 100).toFixed(2);
+  }
+
+  public TeamStatistics(team: TeamType) {
+    if (team.homeMatchs) {
+      this.totalGames += team.homeMatchs.length;
+      this.goals(team.homeMatchs, true);
+      team.homeMatchs.forEach((match) => {
+        if (match.homeTeamGoals > match.awayTeamGoals) this.winMatchs();
+        else if (match.homeTeamGoals < match.awayTeamGoals) this.LossMatchs();
+        else this.DrawMatchs();
+      });
+    }
+    if (team.awayMatchs) {
+      this.totalGames += team.awayMatchs.length;
+      this.goals(team.awayMatchs, false);
+      team.awayMatchs.forEach((match) => {
+        if (match.homeTeamGoals > match.awayTeamGoals) this.LossMatchs();
+        else if (match.homeTeamGoals < match.awayTeamGoals) this.winMatchs();
+        else this.DrawMatchs();
+      });
+    } this.efficiency = this.efficiencyInGames();
   }
 }
