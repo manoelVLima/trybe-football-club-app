@@ -355,3 +355,7 @@ OBS: If your containers don't auto-upload, you'll have to manually upload them.
     The API will return a JSON array of objects, where each object represents a team and its standings in the championship. The response will look the same way as the one from `/leaderboard`.
 
     Note: The teams are sorted primary by points, with other properties being used as tie-breakers if necessary. The only difference between `/leaderboard/home` and `/leaderboard/away` is the filter applied to the data, showing only matches played at home or away, respectively.
+
+---
+        
+### Project developed by [Manoel Vieira Lima Junior](https://www.linkedin.com/in/manoel-vieira-lima-junior-589838127/)
